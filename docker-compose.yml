@@ -1,0 +1,35 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: pneumonia_backend
+    expose:
+      - "5000"
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://localhost:5000/health', timeout=5)"
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 180s
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    container_name: pneumonia_frontend
+    ports:
+      - "8501:8501"
+    environment:
+      BACKEND_URL: "http://backend:5000"
+    volumes:
+      - .:/workspaces:cached
+    depends_on:
+      backend:
+        condition: service_healthy
+    restart: unless-stopped

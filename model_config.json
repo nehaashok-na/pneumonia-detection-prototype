@@ -1,0 +1,27 @@
+{
+    "model_name": "EfficientNetB0",
+    "input_size": [
+        224,
+        224
+    ],
+    "input_channels": 3,
+    "class_names": [
+        "No Lung Opacity / Not Normal",
+        "Normal",
+        "Lung Opacity"
+    ],
+    "lung_opacity_threshold": 0.45,
+    "model_type": "efficientnet",
+    "pixel_range": [
+        0,
+        255
+    ],
+    "preprocessing": [
+        "Read DICOM image",
+        "Invert MONOCHROME1 if required",
+        "Clip pixel values to 0-255",
+        "Resize to 224x224 preserving intensity",
+        "Replicate grayscale into three channels",
+        "Keep pixel values in 0-255 range"
+    ]
+}

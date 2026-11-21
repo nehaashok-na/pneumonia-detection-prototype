@@ -1,0 +1,41 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Jupyter temporary files
+.ipynb_checkpoints/
+
+# Environment and secret files
+.env
+.env.*
+!.env.example
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+
+# Medical imaging datasets and uploaded patient images
+data/
+dataset/
+datasets/
+stage_2_train_images/
+*.dcm
+*.dicom
+
+# Compressed dataset archives
+*.zip
+*.tar
+*.gz
