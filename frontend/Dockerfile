@@ -8,7 +8,7 @@ WORKDIR /app
 # Install frontend dependencies
 COPY frontend/requirements.txt /app/requirements.txt
 
-RUN pip install --no-cache-dir -r /app/requirements.txt
+RUN pip install --no-cache-dir --default-timeout=120 --retries=10 -r /app/requirements.txt
 
 # Copy Streamlit application
 COPY frontend/app.py /app/app.py
