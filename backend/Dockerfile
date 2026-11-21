@@ -13,7 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Install backend dependencies
 COPY backend/requirements.txt /app/backend/requirements.txt
 
-RUN pip install --no-cache-dir -r /app/backend/requirements.txt
+RUN pip install --no-cache-dir --default-timeout=120 --retries=10 -r /app/requirements.txt
 
 # Copy backend application and trained model
 COPY backend/app.py /app/backend/app.py
